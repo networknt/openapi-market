@@ -88,12 +88,12 @@ chains:
     - validator
 
 paths:
-  - path: '/{store}/products'
+  - path: '/v1/market/{store}/products'
     method: 'GET'
     exec:
       - default
       - com.networknt.market.handler.StoreProductsGetHandler
-  - path: '/{store}/products'
+  - path: '/v1/market/{store}/products'
     method: 'POST'
     exec:
       - default
