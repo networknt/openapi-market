@@ -1,5 +1,4 @@
-
-FROM azul/zulu-openjdk-alpine:11 as packager
+FROM azul/zulu-openjdk-alpine:17 as packager
 
 RUN { \
         java --version ; \
@@ -8,6 +7,9 @@ RUN { \
     }
 
 ENV JAVA_MINIMAL=/opt/jre
+
+# Install binutils for objcopy
+RUN apk add --no-cache binutils
 
 # build modules distribution
 RUN $JAVA_HOME/bin/jlink \
@@ -27,9 +29,5 @@ ENV JAVA_MINIMAL=/opt/jre
 ENV PATH="$PATH:$JAVA_MINIMAL/bin"
 
 COPY --from=packager "$JAVA_MINIMAL" "$JAVA_MINIMAL"
-
-
-COPY /target/server.jar server.jar
-
-
+COPY /target/openapi-market.jar server.jar
 CMD ["/bin/sh","-c","exec java -Dlight-4j-config-dir=/config -Dlogback.configurationFile=/config/logback.xml -jar /server.jar"]
