@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk-alpine:17 as packager
+FROM azul/zulu-openjdk-alpine:21 as packager
 
 RUN { \
         java --version ; \
