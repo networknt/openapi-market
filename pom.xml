@@ -76,7 +76,7 @@
     </pluginRepositories>
 
     <properties>
-    <version.central-publishing-maven>0.11.0</version.central-publishing-maven>
+    <version.central-publishing-maven>0.12.0</version.central-publishing-maven>
         <java.version>25</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.main.class>com.networknt.server.Server</project.main.class>
